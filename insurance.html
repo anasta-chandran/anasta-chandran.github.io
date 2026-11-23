@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insurance Policy Analytics | Anasta Chandran</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --cream:#f7f4ee;
+    --paper:#fffdf9;
+    --brown:#5c4636;
+    --dark:#29241f;
+    --muted:#81776d;
+    --line:#e8e0d5;
+    --accent:#a17d5d;
+}
+* {box-sizing:border-box;margin:0;padding:0}
+html {scroll-behavior:smooth}
+body {background:var(--cream);color:var(--dark);font-family:"DM Sans",sans-serif;line-height:1.75}
+a {color:inherit;text-decoration:none}
+.container {width:min(1050px,88%);margin:auto}
+nav {border-bottom:1px solid var(--line);background:var(--cream)}
+.nav {min-height:75px;display:flex;justify-content:space-between;align-items:center}
+.logo {font-family:"Playfair Display",serif;font-size:22px;color:var(--brown)}
+.back {font-size:13px;color:var(--accent)}
+.hero {padding:100px 0 80px;border-bottom:1px solid var(--line)}
+.eyebrow {font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:700}
+h1,h2,h3 {font-family:"Playfair Display",serif;font-weight:500;color:var(--brown)}
+h1 {font-size:clamp(42px,6vw,68px);line-height:1.15;max-width:850px;margin:20px 0}
+.hero p {max-width:720px;color:var(--muted);font-size:16px}
+.tags {display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}
+.tags span {background:#eee7dd;color:var(--brown);padding:7px 13px;font-size:11px}
+.meta {display:flex;flex-wrap:wrap;gap:35px;margin-top:45px}
+.meta div {font-size:13px;color:var(--muted)}
+.meta strong {display:block;color:var(--brown);font-size:14px}
+section {padding:75px 0;border-bottom:1px solid var(--line)}
+.heading {margin-bottom:30px}
+.heading h2 {font-size:38px;margin-top:8px}
+.heading p {color:var(--muted);max-width:720px;margin-top:8px}
+.content {max-width:820px}
+.content p {color:var(--muted);margin-bottom:16px}
+.content strong {color:var(--brown)}
+..grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 35px;
+}
+.card {background:var(--paper);border:1px solid var(--line);padding:26px}
+.card h3 {font-size:22px;margin-bottom:10px}
+.card p,.card li {font-size:14px;color:var(--muted)}
+.card ul {padding-left:19px}
+.metrics {display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.metric {background:var(--paper);border:1px solid var(--line);padding:22px}
+.metric strong {display:block;color:var(--brown);font-family:"Playfair Display",serif;font-size:27px}
+.metric span {font-size:12px;color:var(--muted)}
+.soft {background:#f0ebe2}
+.step {border-left:1px solid #cbb9a5;padding-left:25px;margin-bottom:28px;position:relative}
+.step:before {content:"";position:absolute;left:-5px;top:9px;width:9px;height:9px;background:var(--accent);border-radius:50%}
+.step h3 {font-size:21px;margin-bottom:5px}
+.step p {font-size:14px;color:var(--muted)}
+.highlight {background:var(--paper);border-left:3px solid var(--accent);padding:24px;margin:20px 0}
+.highlight p {color:var(--muted);font-size:14px}
+.dash {border:1px dashed #cbb9a5;background:var(--paper);padding:30px;text-align:center;color:var(--muted);font-size:13px}
+.dash strong {display:block;color:var(--brown);font-size:17px;margin-bottom:8px}
+.cta {background:var(--brown);color:white;text-align:center;padding:65px 20px}
+.cta h2 {color:white;font-size:38px;margin-bottom:12px}
+.cta p {color:#e0d5c9;margin-bottom:22px}
+.btn {display:inline-block;border:1px solid #e0d5c9;padding:12px 22px;color:white;font-size:13px}
+footer {text-align:center;padding:25px;color:var(--muted);font-size:12px}
+@media(max-width:700px) {
+ .grid {grid-template-columns:1fr}
+ .metrics {grid-template-columns:repeat(2,1fr)}
+ .meta {gap:20px}
+ .nav {padding:15px 0}
+ .heading h2 {font-size:31px}
+}
+.dashboard-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.dashboard-gallery .dash {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    padding: 20px;
+}
+
+.dashboard-image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 520px;
+    object-fit: contain;
+    margin: 20px auto;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+ <div class="container nav">
+  <a class="logo" href="index.html">Anasta Chandran.</a>
+  <a class="back" href="index.html#projects">← Back to portfolio</a>
+ </div>
+</nav>
+
+<header class="hero">
+ <div class="container">
+  <span class="eyebrow">Project 01 · Insurance Analytics</span>
+  <h1>Understanding insurance portfolios through data.</h1>
+  <p>
+   An end-to-end team analytics project exploring customer demographics,
+   policy distribution, premiums, coverage and policy status. The objective
+   was to turn a multi-table insurance dataset into useful business insights
+   through structured analysis and dashboards.
+  </p>
+  <div class="tags">
+   <span>Excel</span><span>SQL</span><span>Python</span>
+   <span>Power BI</span><span>Tableau</span>
+  </div>
+  <div class="meta">
+   <div><strong>Project type</strong>Team project</div>
+   <div><strong>Organisation</strong>AiVariant Internship</div>
+   <div><strong>Team</strong>6 members</div>
+   <div><strong>Role</strong>Business Analyst Intern</div>
+  </div>
+ </div>
+</header>
+
+<section>
+ <div class="container">
+  <div class="heading">
+   <span class="eyebrow">01 · The business context</span>
+   <h2>The problem we explored.</h2>
+  </div>
+  <div class="content">
+   <p>
+    Insurance businesses manage information across customers, policies,
+    claims and payments. Looking at these records separately can make it
+    difficult to understand the overall portfolio and identify patterns
+    that may support better decisions.
+   </p>
+   <p>
+    Our project explored how structured analysis of insurance data could
+    help examine customer profiles, policy distribution, premium amounts,
+    coverage levels and policy status.
+   </p>
+   <div class="highlight">
+    <p><strong>Central business question</strong></p>
+    <p>What can insurance data reveal about customer profiles, policy performance and the distribution of insurance coverage?</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="soft">
+ <div class="container">
+  <div class="heading">
+   <span class="eyebrow">02 · Project objectives</span>
+   <h2>What we set out to understand.</h2>
+  </div>
+  <div class="grid">
+   <div class="card"><h3>Customer profile</h3><p>Explore customer demographics, age distribution and gender categories.</p></div>
+   <div class="card"><h3>Policy distribution</h3><p>Understand the distribution of policies across types and status categories.</p></div>
+   <div class="card"><h3>Financial overview</h3><p>Examine premium amounts and coverage values across the policy portfolio.</p></div>
+   <div class="card"><h3>Claims and payments</h3><p>Explore claims, settlements and payment information available in the dataset.</p></div>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="container">
+  <div class="heading">
+   <span class="eyebrow">03 · Dataset overview</span>
+   <h2>Working with connected business data.</h2>
+   <p>The project involved multiple related datasets covering key areas of insurance operations.</p>
+  </div>
+  <div class="grid">
+   <div class="card"><h3>Customer data</h3><p>Customer demographic information, including age and gender.</p></div>
+   <div class="card"><h3>Policy data</h3><p>Policy identifiers, policy types, status, coverage and premium amounts.</p></div>
+   <div class="card"><h3>Claims data</h3><p>Claim dates, claim status and settlement information.</p></div>
+   <div class="card"><h3>Payment data</h3><p>Payment dates, payment methods and payment status.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="soft">
+ <div class="container">
+  <div class="heading">
+   <span class="eyebrow">04 · Analytical workflow</span>
+   <h2>From raw data to business insights.</h2>
+  </div>
+  <div class="step">
+   <h3>01. Data understanding</h3>
+   <p>Reviewed the available tables, fields, data types and categorical values to understand the structure of the insurance dataset.</p>
+  </div>
+  <div class="step">
+   <h3>02. Data preparation</h3>
+   <p>Checked missing values and converted relevant date fields into datetime format for analysis.</p>
+  </div>
+  <div class="step">
+   <h3>03. Data analysis</h3>
+   <p>Used SQL and Python to query, examine and analyse the available insurance information.</p>
+  </div>
+  <div class="step">
+   <h3>04. Dashboard development</h3>
+   <p>Used Excel, Power BI and Tableau to create visual dashboards and communicate analytical results.</p>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="container">
+  <div class="heading">
+   <span class="eyebrow">05 · Key performance indicators</span>
+   <h2>Measuring the insurance portfolio.</h2>
+   <p>Selected measures calculated during the project.</p>
+  </div>
+  <div class="metrics">
+   <div class="metric"><strong>5,000</strong><span>Customer records</span></div>
+   <div class="metric"><strong>3,148</strong><span>Unique customers with policies</span></div>
+   <div class="metric"><strong>1,052.20</strong><span>Average premium amount</span></div>
+   <div class="metric"><strong>254,562.95</strong><span>Average coverage amount</span></div>
+  </div>
+  <br>
+  <div class="grid">
+   <div class="card"><h3>Policy status distribution</h3><ul><li>Active: 1,682</li><li>Terminated: 1,678</li><li>Lapsed: 1,640</li></ul></div>
+   <div class="card"><h3>Customer policy ownership</h3><ul><li>Customers with multiple policies: 1,300</li><li>Maximum policies held by one customer: 6</li><li>Customers without policies: 1,852</li></ul></div>
+   <div class="card"><h3>Customer age profile</h3><p>Average customer age: 51.17 years. The 28–38 age group was the largest group, with 790 records.</p></div>
+   <div class="card"><h3>Policy categories</h3><p>Property, Auto, Health and Life insurance were the policy types represented in the dataset.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="soft">
+ <div class="container">
+  <div class="heading">
+   <span class="eyebrow">06 · Data quality and challenges</span>
+   <h2>Making the data analysis-ready.</h2>
+  </div>
+  <div class="content">
+   <p>
+    An important part of the workflow was checking the quality and consistency
+    of the data before interpreting the results.
+   </p>
+   <div class="card">
+    <h3>Missing values in claims information</h3>
+    <p>Missing values were identified in the claims data, including 1,555 missing settlement dates after date conversion.</p>
+   </div>
+   <br>
+   <div class="card">
+    <h3>Date standardisation</h3>
+    <p>Policy start dates, policy end dates, claim dates, settlement dates and payment dates were converted into datetime format to support time-based analysis.</p>
+   </div>
+   <br>
+   <div class="card">
+    <h3>Multiple related tables</h3>
+    <p>Working across customer, policy, claims and payment information required understanding how different parts of the insurance dataset relate to one another.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="container">
+  <div class="heading">
+   <span class="eyebrow">07 · Findings and interpretation</span>
+   <h2>What the data revealed.</h2>
+  </div>
+  <div class="content">
+   <div class="highlight">
+    <p><strong>A varied policy portfolio</strong></p>
+    <p>Active, terminated and lapsed policies had relatively close counts, suggesting that no single status category overwhelmingly dominated the recorded portfolio.</p>
+   </div>
+   <div class="highlight">
+    <p><strong>Multiple-policy ownership</strong></p>
+    <p>1,300 customers held multiple policies. This provides an opportunity to explore customer relationships and policy ownership patterns further.</p>
+   </div>
+   <div class="highlight">
+    <p><strong>Customer age distribution</strong></p>
+    <p>The 28–38 age group had the highest number of records among the age groups analysed, with 790.</p>
+   </div>
+   <div class="highlight">
+    <p><strong>Premium and coverage overview</strong></p>
+    <p>The average premium amount was 1,052.20 and average coverage amount was 254,562.95 per policy.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="soft">
+ <div class="container">
+  <div class="heading">
+   <span class="eyebrow">08 · Business recommendations</span>
+   <h2>Turning findings into possible actions.</h2>
+   <p>These are proposed opportunities based on the patterns observed, not measured business outcomes.</p>
+  </div>
+  <div class="grid">
+   <div class="card"><h3>Review policy retention</h3><p>Investigate why policies become lapsed or terminated and explore possible retention strategies.</p></div>
+   <div class="card"><h3>Understand customer segments</h3><p>Explore customer age groups and policy preferences to support more informed customer segmentation.</p></div>
+   <div class="card"><h3>Explore cross-selling opportunities</h3><p>Study customers with multiple policies to identify relevant opportunities for additional coverage.</p></div>
+   <div class="card"><h3>Improve data quality</h3><p>Review missing claims settlement information to improve the reliability of claims reporting.</p></div>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="container">
+  <div class="heading">
+   <span class="eyebrow">09 · Dashboard showcase</span>
+   <h2>Making insights visible.</h2>
+   <p>Dashboards were developed using three visualisation tools. Add your actual dashboard screenshots below.</p>
+  </div>
+ <div class="dashboard-gallery">
+
+    <div class="dash">
+        <strong>Excel Dashboard</strong>
+        <img class="dashboard-image"
+             src="Insurance image/Insurance Policy Excel Dashboard(1).png"
+             alt="Insurance Policy Excel Dashboard">
+    </div>
+
+    <div class="dash">
+        <strong>Power BI Dashboard</strong>
+        <img class="dashboard-image"
+            src="Insurance image/Insurance Policy Power BI Dashboard.png"
+             alt="Power BI Dashboard">
+    </div>
+
+    <div class="dash">
+        <strong>Tableau Dashboard</strong>
+        <img class="dashboard-image"
+             src="Insurance image/Insurance Policy Tableau Dashboard.png"
+             alt="Tableau Dashboard">
+    </div>
+
+</div>
+   
+<div class="dash" style="padding:35px; background:#fffaf2; border:1px solid #e8dccb; border-radius:18px;">
+
+    <div style="text-align:center; margin-bottom:30px;">
+        <span style="color:#a17b55; letter-spacing:3px; font-size:12px; font-weight:600;">
+            PROJECT RESOURCES
+        </span>
+        <h2 style="color:#4b2919; font-family:Georgia,serif; font-size:30px; margin:12px 0;">
+            Explore the work behind the insights.
+        </h2>
+        <p style="color:#81766c; font-size:14px;">
+            A closer look at the tools, analysis and dashboards developed during this project.
+        </p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:18px;"></div>
+        <div style="background:#f5ecdf; padding:23px; border-radius:13px; border:1px solid #e5d4c1;">
+            <h3 style="color:#552d1a;">01 · Excel</h3>
+            <p style="color:#75685e; font-size:14px;">Data analysis, KPI calculations and interactive dashboard.</p>
+        </div>
+
+        <div style="background:#f5ecdf; padding:23px; border-radius:13px; border:1px solid #e5d4c1;">
+            <h3 style="color:#552d1a;">02 · SQL</h3>
+            <p style="color:#75685e; font-size:14px;">Data querying and structured analysis to explore policy information.</p>
+        </div>
+
+        <div style="background:#f5ecdf; padding:23px; border-radius:13px; border:1px solid #e5d4c1;">
+            <h3 style="color:#552d1a;">03 · Python</h3>
+            <p style="color:#75685e; font-size:14px;">Data cleaning, preparation and exploratory analysis.</p>
+        </div>
+
+        <div style="background:#f5ecdf; padding:23px; border-radius:13px; border:1px solid #e5d4c1;">
+            <h3 style="color:#552d1a;">04 · Power BI</h3>
+            <p style="color:#75685e; font-size:14px;">Interactive dashboard for policy and claims insights.</p>
+        </div>
+
+        <div style="background:#f5ecdf; padding:23px; border-radius:13px; border:1px solid #e5d4c1;">
+            <h3 style="color:#552d1a;">05 · Tableau</h3>
+            <p style="color:#75685e; font-size:14px;">Visual exploration of insurance performance indicators.</p>
+        </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top:30px; padding-top:24px; border-top:1px solid #e8dccb;">
+        <p style="color:#75685e; font-size:14px;">Want to explore the project files and technical work?</p>
+        <a href="https://github.com/anasta-chandran/Insurance-Policy-Analytics"
+           target="_blank"
+           style="display:inline-block; background:#4b2919; color:#fffaf2; padding:13px 27px; border-radius:7px; text-decoration:none; font-weight:600; margin-top:8px;">
+            Explore GitHub Repository ↗
+        </a>
+    </div>
+
+</div>
+
+ </div>
+</section>
+
+<section class="soft">
+ <div class="container">
+  <div class="heading">
+   <span class="eyebrow">10 · My project experience</span>
+   <h2>Collaboration and analytical learning.</h2>
+  </div>
+  <div class="content">
+   <p>
+    I worked on this project as part of a six-member team during my
+    Business Analyst internship at AiVariant. The project involved
+    discussions, collaborative analysis and the use of multiple analytical
+    tools across a shared dataset.
+   </p>
+   <p>
+    This experience helped me apply data preparation, querying, analysis
+    and dashboard development techniques while understanding how analytical
+    findings can be communicated in a business context.
+   </p>
+  </div>
+ </div>
+</section>
+
+<div class="cta">
+ <div class="container">
+  <h2>Explore the project files.</h2>
+  <p>View the project repository and its supporting analysis.</p>
+  <a class="btn" href="https://github.com/anasta-chandran/Insurance-Policy-Analytics" target="_blank" rel="noopener">View GitHub Repository ↗</a>
+ </div>
+</div>
+
+<footer>© 2026 Anasta Chandran · Insurance Policy Analytics Case Study</footer>
+
+</body>
+</html>
